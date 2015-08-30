@@ -1,6 +1,5 @@
 === Plugin Name ===
 Contributors: oriolo
-Donate link: http://example.com/
 Tags: comments, admin menu, custom post types
 Requires at least: 3.0.1
 Tested up to: 4.3
