@@ -4,7 +4,7 @@
   Plugin Name: Comments by Post Type
   Plugin URI: http://github.com/ierhyna/comments-by-post-type/
   Description: Separate comments by post type in admin menu.
-  Version: 1.0.0
+  Version: 1.0.1
   Author: Irina Sokolovskaya
   Author URI: http://oriolo.ru/
   License: GNU General Public License v2 or later
@@ -36,7 +36,7 @@
  * @return array
  */
 
-function exclude_cpt_comments($clauses, $wp_comment_query) {
+function cbpt_exclude_comments_query($clauses, $wp_comment_query) {
     global $wpdb;
     
     if (!$clauses['join']) {
@@ -63,19 +63,19 @@ function exclude_cpt_comments($clauses, $wp_comment_query) {
  * @param object $screen
  */
 
-function comments_exclude_delay_hook($screen) {
+function cbpt_exclude_comments_delay_hook($screen) {
     if ($screen->id == 'edit-comments') {
-        add_filter('comments_clauses', 'exclude_cpt_comments', 10, 2);
+        add_filter('comments_clauses', 'cbpt_exclude_comments_query', 10, 2);
     }
 }
 
-add_action('current_screen', 'comments_exclude_delay_hook', 10, 2);
+add_action('current_screen', 'cbpt_exclude_comments_delay_hook', 10, 2);
 
 /**
  * Create separated comments menu items for every post type 
  */
 
-function add_comments_menu_for_ctp() {
+function cbpt_add_comments_menues() {
 
     $post_types = apply_filters('comment_admin_menu_post_types', get_post_types(array('public' => true, 'show_ui' => true)));
 
@@ -87,6 +87,6 @@ function add_comments_menu_for_ctp() {
     }
 }
 
-add_action('admin_menu', 'add_comments_menu_for_ctp');
+add_action('admin_menu', 'cbpt_add_comments_menues');
 
 ?>
