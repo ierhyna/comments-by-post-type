@@ -9,6 +9,7 @@
   Author URI: http://oriolo.ru/
   License: GNU General Public License v2 or later
   License URI: http://www.gnu.org/licenses/gpl-2.0.html
+  Text domain: comments-by-post-type
   Domain Path: /languages
 
 
@@ -82,7 +83,7 @@ function cbpt_add_comments_menues() {
     foreach ($post_types as $post_type) {
         if ($post_type != 'post') {
             
-            add_submenu_page("edit.php?post_type={$post_type}", __('Comments'), __('Comments'), 'moderate_comments', "edit-comments.php?post_type={$post_type}");
+            add_submenu_page("edit.php?post_type={$post_type}", __('Comments', 'comments-by-post-type'), __('Comments', 'comments-by-post-type'), 'moderate_comments', "edit-comments.php?post_type={$post_type}");
         }
     }
 }
