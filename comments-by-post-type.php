@@ -4,7 +4,7 @@
   Plugin Name: Comments by Post Type
   Plugin URI: http://github.com/ierhyna/comments-by-post-type/
   Description: Separate comments by post type in admin menu.
-  Version: 1.0.1
+  Version: 1.0.2
   Author: Irina Sokolovskaya
   Author URI: http://oriolo.ru/
   License: GNU General Public License v2 or later
