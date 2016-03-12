@@ -30,6 +30,19 @@
 */
 
 /**
+ * Load Localization
+ */
+function cbpt_lang_init() {
+    $domain = 'comments-by-post-type';
+    // The "plugin_locale" filter is also used in load_plugin_textdomain()
+    $locale = apply_filters('plugin_locale', get_locale(), $domain);
+    load_textdomain($domain, WP_LANG_DIR.'/plugins/'.$domain.'-'.$locale.'.mo');
+    load_plugin_textdomain($domain, FALSE, dirname(plugin_basename(__FILE__)).'/languages/');
+}
+
+add_action('plugins_loaded', 'cbpt_lang_init');
+
+/**
  * Exclude comments of all post types except "post" from edit-comments.php page.
  *
  * @param  array  $clauses
