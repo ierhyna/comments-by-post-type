@@ -94,7 +94,7 @@ function cbpt_add_comments_menues() {
     $post_types = apply_filters('comment_admin_menu_post_types', get_post_types(array('public' => true, 'show_ui' => true)));
 
     foreach ($post_types as $post_type) {
-        if ($post_type != 'post') {
+        if ( $post_type != 'post' && post_type_supports( $post_type, 'comments' ) ) {
             
             add_submenu_page("edit.php?post_type={$post_type}", __('Comments', 'comments-by-post-type'), __('Comments', 'comments-by-post-type'), 'moderate_comments', "edit-comments.php?post_type={$post_type}");
         }
